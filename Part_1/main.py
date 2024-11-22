@@ -51,10 +51,11 @@ def optimal_k_value():
 
     # Plotting the optimal k values
     plt.figure(figsize=(10, 6))
-    plt.plot(N_VALUES, list(optimal_k_values.values()), marker="o")
+    plt.bar(range(len(N_VALUES)), list(optimal_k_values.values()), color="skyblue")
     plt.title("Optimal K Value for Hybrid Sort")
     plt.xlabel("Array Size")
     plt.ylabel("Optimal K Value")
+    plt.xticks(range(len(N_VALUES)), [f"n:{n}" for n in N_VALUES])
     plt.grid(True, which="both", linestyle="--", linewidth=0.5)
     plt.show()
 # ---------------------------------------------------------------------------------------------------------
