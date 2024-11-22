@@ -1,6 +1,7 @@
 #Proposing a dynamic programming solution
 
-"""In order to obtain the maximum enjoyment points while keeping up with the weight constraint of 20,
+"""
+In order to obtain the maximum enjoyment points while keeping up with the weight constraint of 20,
 we can use the idea of 0/1 knapsack. 0/1 knapsack simply means the objects we choose are 
 indivisible, we either choose it or we don't. We create a 0/1 knapsack table and start filling it based on certain 
 criteria.
