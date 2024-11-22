@@ -29,7 +29,7 @@ SPACE COMPLEXITY: O(N * W)
 These would likely approximate to O(n^2), which means it runs in quadratic time.
 """
 
-#   CODE IMPLEMENTATION
+#   CODE IMPLEMENTATION (DELIVERABLE 2.3)
 
 # Initializing Experience weights and values
 weights = [0,8,7,6,5,4] # Including a dummy 0 to match 1-based indexing
@@ -77,3 +77,37 @@ print("The maximum number of enjoyment points within the weight limit : {}".form
 for i in range(len(experiences) - 1, -1, -1):
     print("Experience {} (Weight: {}, Value: {}) was selected!"
     .format(experiences[i], weights[experiences[i]], values[experiences[i]]))
+
+
+# DELIVERABLE 2.4
+"""As per the output, we get:
+The maximum number of enjoyment points within the weight limit : 6500
+Experience 3 (Weight: 6, Value: 1700) was selected!
+Experience 4 (Weight: 5, Value: 1800) was selected!
+Experience 5 (Weight: 4, Value: 3000) was selected!
+This does indeed happen to be the output we expected.
+
+Total weight : 6 + 4 + 5 = 15
+
+Rationale for selection: 
+The chosen experiences maximize the total enjoyment points achievable within the weight constraint of 20 units. 
+The dynamic programming / knapsack approach ensures that no other combination of experiences could provide a 
+higher enjoyment value while staying within the weight limit. 
+
+As for experience 5, it offers the highest enjoyment points by far, at 3000. In addition, it only takes up 4
+units of weight, which happens to actually be the lowest amongst the other experiences. So there is absolutely
+no reason to NOT include this experience.
+The same explanation goes to why we chose experience 4 and 3. Their weight to value ratio is much better than 
+experience 1 and 2. They not only have lower weights (in comparison to experience 1 and 2) but also offer higher 
+value. Hence, we include experience 3 and 4.
+At this point, we have only used 15 units of weight. Unfortunately, however, we don't have anymore capacity
+to accomodate any other experience.
+
+From these results, this is what we can infer:
+----> We choose a unique experience (that has not been selected before) that balances maximum enjoyment with 
+minimal weight investment.
+----> Sometimes, just a single high value experience can actually outweight multiple lower-value experiences. 
+For example, in this case, we chose experience 5 with value 3000. It has a weight of just 4 units, while experience
+1 and 2 have a combined weight of 15. While experience 1 and 2 combined offer a slightly higher value of 3100,
+the fact the weight of experience 3 is just 4 more than makes up for that slightly lower value.
+""" 
