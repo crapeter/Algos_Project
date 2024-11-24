@@ -1,0 +1,27 @@
+Recurrence Relation
+  Let E[i][w] show that the maximum enjoyment points using the first i experiences with maximum weight limit w, the recurrence relation is as shown
+    E[i][w] = E[i-1][w] if Weight[i] is greater than w
+    E[i][w] = max(E[i-1][w], Value[i] + E[i-1][w - Weight[i]]) if Weight[i] is less than or equal to w
+
+Case 1:
+Exclude the current experience
+if the weight of the i^th experience (Weight[i]) passes the current weight limit (w=20).
+  E[i][w] = E[i-1][w]
+
+Case 2:
+If the weight of the i^th experience (Weight[i]) is less than or equal to the current weight limit (w), two options arise:
+Exclude the ithi^{th}ith experience: The maximum enjoyment points remain the same as in the previous step, E[i−1][w].
+ E[i−1][w]E[i-1][w]
+
+Include the i^th experience: The total enjoyment is the sum of:
+  The value of the i^th experience (Value[i]).
+  The maximum enjoyment points achievable with the reduced weight limit (w−Weight[i]): E[i−1][w−Weight[i]].
+  The recurrence relation takes the maximum of these two choices:
+    E[i][w] = max(E[i-1][w], Value[i] + E[i-1][w - Weight[i]])
+
+Base Case
+  E[0][w] = 0: if no experiences are considered then enjoyment is 0.
+  E[i][0]=0: if the weight limit is 0 then no experiences can occur, so enjoyment is 0.
+    The solution to the problem is found at E[n][W], where n=5 (total number of experiences) and W=20 (luggage weight limit). This represents the maximum enjoyment points achievable under the given constraints.
+    This recurrence relation explicitly captures how weights and values influence the decision-making process, emphasizing the trade-offs between including or excluding an experience.
+
